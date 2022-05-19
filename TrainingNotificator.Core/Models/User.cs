@@ -1,6 +1,6 @@
 ﻿namespace TrainingNotificator.Core.Models
 {
-    public class User : Telegram.Bot.Types.User
+    public class CustomUser : Telegram.Bot.Types.User
     {
     }
 }

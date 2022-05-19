@@ -68,5 +68,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrainingNotificator.Core\TrainingNotificator.Core.csproj">
+      <Project>{249C25D9-7782-4C11-A841-58473CF0B97E}</Project>
+      <Name>TrainingNotificator.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
