@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -33,17 +34,17 @@ namespace TrainingNotificator.Bot
 
             if (messageText == "/start")
             {
-                var user = await this.unitOfWork.UsersRepository.GetWhere(u => u.Id == chatId);
+                var user = (await this.unitOfWork.UsersRepository.GetWhere(u => u.Id == chatId)).FirstOrDefault();
                 if (user == null)
                 {
                     var tgUser = update.Message.From;
-                    var user = new CustomUser()
+                    user = new CustomUser()
                     {
                         Id = tgUser.Id,
                         FirstName = tgUser.FirstName,
                         Username = tgUser.Username,
                     };
-                    await this.unitOfWork.UsersRepository.Add(update.ChatMember.From)
+                    //await this.unitOfWork.UsersRepository.Add(update.ChatMember.From)
                 }
             }
 
