@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -42,11 +43,14 @@ namespace TrainingNotificator.Bot
                     return;
                 }
 
-                if (currentDateTime.Minute == 0)
+                if (currentDateTime.Second == 0)
                 {
                     var users = await this.unitOfWork.UsersRepository.GetAll();
+                    Console.WriteLine($"UserCount : {users.Count()}");
+
                     foreach (var user in users)
                     {
+                        Console.WriteLine($"UserId : {user.Id}");
                         await botClient.SendTextMessageAsync(
                                 chatId: user.Id,
                                 text: "ПОРА ПОЗАНИМАТЬСЯ !!!",
@@ -55,8 +59,13 @@ namespace TrainingNotificator.Bot
                 }
 
                 Console.WriteLine($"Проверка времени. {DateTime.Now}");
-                await Task.Delay(5000);
+                await Task.Delay(1000);
             }
+        }
+
+        public async Task SendMessage(long userId, string message)
+        {
+            await this.botClient.SendTextMessageAsync(userId, message);
         }
 
         private bool IsCheckWorkingTime(DateTime currentDateTime)

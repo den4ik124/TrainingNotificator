@@ -16,11 +16,12 @@ namespace TrainingNotificator.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TrainingNotificator.Core.Models.User", b =>
+            modelBuilder.Entity("TrainingNotificator.Core.Models.CustomUser", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("IdentityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -34,6 +35,9 @@ namespace TrainingNotificator.Data.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
 
                     b.Property<bool>("IsBot")
                         .HasColumnType("bit");
@@ -50,7 +54,7 @@ namespace TrainingNotificator.Data.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdentityId");
 
                     b.ToTable("Users");
                 });

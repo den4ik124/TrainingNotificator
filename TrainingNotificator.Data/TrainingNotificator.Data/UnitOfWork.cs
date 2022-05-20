@@ -16,24 +16,29 @@ namespace TrainingNotificator.Data
 
         public IRepository<CustomUser> UsersRepository { get; set; }
 
-        public Task BeginTransactionAsync()
+        public async Task BeginTransactionAsync()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Task CompleteAsync()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RollbackTransaction()
-        {
-            throw new System.NotImplementedException();
+            await this.context.Database.BeginTransactionAsync();
         }
 
         public void TransactionCommit()
         {
-            throw new System.NotImplementedException();
+            this.context.Database.CommitTransaction();
+        }
+
+        public void RollbackTransaction()
+        {
+            this.context.Database.RollbackTransaction();
+        }
+
+        public async Task CompleteAsync()
+        {
+            await this.context.SaveChangesAsync();
+        }
+
+        public void Dispose()
+        {
+            this.context.Dispose();
         }
     }
 }

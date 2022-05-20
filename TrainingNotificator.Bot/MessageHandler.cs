@@ -44,10 +44,10 @@ namespace TrainingNotificator.Bot
                         FirstName = tgUser.FirstName,
                         Username = tgUser.Username,
                     };
-                    //await this.unitOfWork.UsersRepository.Add(update.ChatMember.From)
+                    await this.unitOfWork.UsersRepository.Add(user);
                 }
             }
-
+            await this.unitOfWork.CompleteAsync();
             // Echo received message text
             Message sentMessage = await botClient.SendTextMessageAsync(
                 chatId: chatId,

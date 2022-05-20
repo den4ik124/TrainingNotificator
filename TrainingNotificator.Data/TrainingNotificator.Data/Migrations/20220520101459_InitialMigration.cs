@@ -2,7 +2,7 @@
 
 namespace TrainingNotificator.Data.Migrations
 {
-    public partial class init : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,6 +10,8 @@ namespace TrainingNotificator.Data.Migrations
                 name: "Users",
                 columns: table => new
                 {
+                    IdentityId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Id = table.Column<long>(nullable: false),
                     IsBot = table.Column<bool>(nullable: false),
                     FirstName = table.Column<string>(nullable: false),
@@ -22,7 +24,7 @@ namespace TrainingNotificator.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.IdentityId);
                 });
         }
 

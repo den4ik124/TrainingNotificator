@@ -138,9 +138,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20220519140130_init.cs" />
-    <Compile Include="Migrations\20220519140130_init.designer.cs">
-      <DependentUpon>20220519140130_init.cs</DependentUpon>
+    <Compile Include="Migrations\20220520101459_InitialMigration.cs" />
+    <Compile Include="Migrations\20220520101459_InitialMigration.designer.cs">
+      <DependentUpon>20220520101459_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\UsersDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,8 +10,8 @@ using TrainingNotificator.Data;
 namespace TrainingNotificator.Data.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    [Migration("20220519140130_init")]
-    partial class init
+    [Migration("20220520101459_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,9 +21,9 @@ namespace TrainingNotificator.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TrainingNotificator.Core.Models.User", b =>
+            modelBuilder.Entity("TrainingNotificator.Core.Models.CustomUser", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("IdentityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -37,6 +37,9 @@ namespace TrainingNotificator.Data.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
 
                     b.Property<bool>("IsBot")
                         .HasColumnType("bit");
@@ -53,7 +56,7 @@ namespace TrainingNotificator.Data.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdentityId");
 
                     b.ToTable("Users");
                 });

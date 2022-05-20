@@ -42,7 +42,7 @@
             // 
             this.serviceInstaller1.Description = "Описание программы";
             this.serviceInstaller1.DisplayName = "Оповещатель";
-            this.serviceInstaller1.ServiceName = "TrainingNotificator2";
+            this.serviceInstaller1.ServiceName = "TrainingNotificator3";
             // 
             // ProjectInstaller
             // 
